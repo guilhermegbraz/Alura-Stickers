@@ -1,5 +1,7 @@
 package Test.java;
 
+import Main.java.JsonParser;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -18,7 +20,10 @@ public class ImblAPITest {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String body = response.body();
 
-        System.out.println(body);
+
+        JsonParser parser = new JsonParser();
+        List<Map<String, String>> listaDeFilmes = parser.parse(body);
+        System.out.println(listaDeFilmes.size());
 
     }
 

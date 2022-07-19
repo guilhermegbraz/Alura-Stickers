@@ -20,7 +20,7 @@ public class CarregarFilmeDeArquivoJson {
 
     public List<Filme> getListaDeFilmes() throws RuntimeException {
         if (this.arquivoJson == null) {
-            throw new RuntimeException("VocÃª nÃ£o setou o arquivo json");
+            throw new RuntimeException("Você não setou o arquivo json");
         }
 
         List<Map<String, String>> listaDeFilmes = parser.parse(this.arquivoJson);

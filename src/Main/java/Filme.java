@@ -40,17 +40,33 @@ public class Filme {
 
 
    public String toString() {
-        String result = "Titulo: "+
-        this.titulo +
-        ", Nota: " +
-        this.avaliacaoImbl;
-        if (this.avaliacaoPessoal != null) {
-            result = result + "Nota pessoal: " + this.avaliacaoPessoal;
+        StringBuilder resultado = new StringBuilder();
+
+        String NEGRITO = "\u001b[1m";
+        String SUBLINHADO = "\u001b[5m";
+        String NORMAL = "\u001b[0m";
+        String FUNDOMAGENTA = "\u001b[45m";
+        String AZUL = "\u001b[34m";
+        String COR_NOTA;
+
+
+        resultado.append(FUNDOMAGENTA + NEGRITO + "Titulo: " + NORMAL);
+        resultado.append( FUNDOMAGENTA + SUBLINHADO + this.getTitulo() + NORMAL + "\n");
+
+        resultado.append(NEGRITO + "Link para o poster: " + NORMAL);
+        resultado.append(AZUL + this.getPoster() + NORMAL + "\n");
+
+        resultado.append(NEGRITO + "Avaliação: " + NORMAL);
+        for (int i = 0; i < Float.parseFloat(this.avaliacaoImbl); i++) {
+            resultado.append("⭐");
         }
+        if (Float.parseFloat(this.avaliacaoImbl) <= 5f) {
+             COR_NOTA = "\u001b[31m";
+        } else {COR_NOTA = "\u001b[32m";}
 
-        result = result + ", poster: " + this.poster + ".";
+        resultado.append(" " + COR_NOTA +"(" + this.avaliacaoImbl + ")" + NORMAL + "\n");
 
-        return result;
+        return resultado.toString();
     }
 
 

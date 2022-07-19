@@ -43,9 +43,12 @@ public class Filme {
         String result = "Titulo: "+
         this.titulo +
         ", Nota: " +
-        this.avaliacaoImbl +
-        ", poster: " +
-        this.poster + ".\n";
+        this.avaliacaoImbl;
+        if (this.avaliacaoPessoal != null) {
+            result = result + "Nota pessoal: " + this.avaliacaoPessoal;
+        }
+
+        result = result + ", poster: " + this.poster + ".";
 
         return result;
     }

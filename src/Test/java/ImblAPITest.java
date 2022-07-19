@@ -1,5 +1,7 @@
 package Test.java;
 
+import Main.java.CarregarFilmeDeArquivoJson;
+import Main.java.Filme;
 import Main.java.JsonParser;
 
 import java.net.URI;
@@ -9,6 +11,7 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class ImblAPITest {
     public static void main(String[] args) throws Exception  {
@@ -17,25 +20,20 @@ public class ImblAPITest {
         URI endereco = URI.create(url);
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder(endereco).GET().build();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());// pode dar erro
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String body = response.body();
 
 
-        JsonParser parser = new JsonParser();
-        List<Map<String, String>> listaDeFilmes = parser.parse(body);
-        StringBuilder result = new StringBuilder();
+        CarregarFilmeDeArquivoJson carregarFilmeDeArquivoJson = new CarregarFilmeDeArquivoJson();
+        carregarFilmeDeArquivoJson.setArquivoJson(body);
+        List<Filme> filmes = carregarFilmeDeArquivoJson.getListaDeFilmes();
 
-     for(Map<String, String> filme : listaDeFilmes) {
-         result.append("Titulo: ");
-         result.append(filme.get("title"));
-         result.append(", Nota: ");
-         result.append(filme.get("imDbRating"));
-         result.append(", poster: ");
-         result.append(filme.get("image"));
-         result.append(".\n");
+     for(Filme filme : filmes) {
+         System.out.println("Qual a sua avaliação para o filme " + filme.getTitulo() + " ?");
+         Scanner sc = new Scanner(System.in);
+         filme.setAvaliacaoPessoal(sc.next());
+         System.out.println(filme);
      }
-        System.out.println(result.toString());
-
 
     }
 

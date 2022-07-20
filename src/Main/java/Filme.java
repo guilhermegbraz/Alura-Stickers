@@ -5,25 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Filme {
+public class Filme extends Conteudo {
 
-    private final String titulo;
     private final String avaliacaoImbl;
     String avaliacaoPessoal;
-    private String poster;
+
 
     public Filme(String titulo, String avaliacaoImbl, String poster) {
-        this.titulo = titulo;
+        super(titulo, poster);
         this.avaliacaoImbl = avaliacaoImbl;
-        this.poster = poster;
     }
 
-    public void setAvaliacaoPessoal(String avaliacaoPessoal) {
-        this.avaliacaoPessoal = avaliacaoPessoal;
-    }
-
-    public String getTitulo() {
-        return titulo;
+    public Filme( Conteudo conteudoFilme, String avaliacaoImbl) {
+        super(conteudoFilme.getTitulo(), conteudoFilme.getUrlImagem());
+        this.avaliacaoImbl = avaliacaoImbl;
     }
 
     public String getAvaliacaoImbl() {
@@ -34,10 +29,9 @@ public class Filme {
         return avaliacaoPessoal;
     }
 
-    public String getPoster() {
-        return poster;
+    public void setAvaliacaoPessoal(String avaliacaoPessoal) {
+        this.avaliacaoPessoal = avaliacaoPessoal;
     }
-
 
    public String toString() {
         StringBuilder resultado = new StringBuilder();
@@ -54,7 +48,7 @@ public class Filme {
         resultado.append( FUNDOMAGENTA + SUBLINHADO + this.getTitulo() + NORMAL + "\n");
 
         resultado.append(NEGRITO + "Link para o poster: " + NORMAL);
-        resultado.append(AZUL + this.getPoster() + NORMAL + "\n");
+        resultado.append(AZUL + SUBLINHADO + this.getUrlImagem() + NORMAL + "\n");
 
         resultado.append(NEGRITO + "Avaliação: " + NORMAL);
         for (int i = 0; i < Float.parseFloat(this.avaliacaoImbl); i++) {

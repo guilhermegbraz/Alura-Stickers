@@ -1,4 +1,4 @@
-package Main.java;
+package Main.java.model;
 
 import Main.java.interfaces.JsonParserModel;
 

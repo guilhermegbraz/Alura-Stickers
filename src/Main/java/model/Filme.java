@@ -1,9 +1,6 @@
-package Main.java;
+package Main.java.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import Main.java.model.Conteudo;
 
 public class Filme extends Conteudo {
 

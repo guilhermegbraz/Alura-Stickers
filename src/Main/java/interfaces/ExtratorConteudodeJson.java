@@ -1,6 +1,6 @@
 package Main.java.interfaces;
 
-import Main.java.Conteudo;
+import Main.java.model.Conteudo;
 
 import java.util.List;
 

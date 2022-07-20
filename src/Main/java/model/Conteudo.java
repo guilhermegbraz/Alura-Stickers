@@ -1,4 +1,4 @@
-package Main.java;
+package Main.java.model;
 
 public class Conteudo {
 

@@ -1,4 +1,4 @@
-package Main.java;
+package Main.java.service;
 
 import Main.java.interfaces.ExtratorConteudodeJson;
 import Main.java.interfaces.JsonParserModel;
@@ -19,7 +19,7 @@ public class ExtratorConteudoNASA implements ExtratorConteudodeJson {
         List<Conteudo> conteudos = new ArrayList<>();
 
         for (Map<String, String> nasaJson : parser.parse(json)) {
-            conteudos.add(new Conteudo(nasaJson.get("title"), nasaJson.get("url")));
+            conteudos.add(new Conteudo(nasaJson.get("title"), nasaJson.get("urlImage")));
         }
 
         return conteudos;

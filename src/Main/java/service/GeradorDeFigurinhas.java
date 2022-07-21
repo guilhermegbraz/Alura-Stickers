@@ -1,4 +1,4 @@
-package Main.java;
+package Main.java.service;
 
 import javax.imageio.ImageIO;
 

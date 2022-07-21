@@ -1,4 +1,4 @@
-package Main.java;
+package Main.java.service;
 
 import Main.java.interfaces.ExtratorConteudodeJson;
 import Main.java.interfaces.JsonParserModel;
@@ -23,7 +23,7 @@ public class ExtratorConteudoIMBL implements ExtratorConteudodeJson {
         return conteudos;
     }
 
-    public List<Filme> extrairFilmes(String json) throws RuntimeException {
+    public List<Filme> extrairFilmes(String json) {
         List<Filme> filmes = new ArrayList<>();
         for (Map<String, String> filmeDaLista : parser.parse(json)) {
             Filme filme = new Filme(
